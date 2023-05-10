@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core.hpp"
+#include "Events/Event.hpp"
 
 namespace Lulu
 {
@@ -14,5 +15,6 @@ namespace Lulu
 		void Run();
 	};
 
+	//Must be defined in Client
 	Application* CreateApplication();
 }

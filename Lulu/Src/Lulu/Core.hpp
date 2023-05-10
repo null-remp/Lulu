@@ -9,3 +9,5 @@
 #else
 	#error Lulu only for OS Windows.
 #endif // LU_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x)

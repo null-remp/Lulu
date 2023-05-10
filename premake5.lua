@@ -28,6 +28,7 @@ project "Lulu"
 
 	includedirs
 	{
+		"${prj.name}/Src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 

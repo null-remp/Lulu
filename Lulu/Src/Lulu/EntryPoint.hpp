@@ -8,8 +8,6 @@ int main(int argc, char** argv)
 {
 	Lulu::Log::Init();
 
-	LU_CORE_ERROR("HI");
-
 	auto sandbox = Lulu::CreateApplication();
 	sandbox->Run(); 
 	delete sandbox;
