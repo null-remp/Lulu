@@ -2,8 +2,6 @@
 
 #include "Event.hpp"
 
-#include <sstream>
-
 namespace Lulu
 {
 	class LULU_API WindowResizeEvent : public Event
@@ -30,6 +28,7 @@ namespace Lulu
 
 	class LULU_API WindowCloseEvent : public Event
 	{
+	public:
 		WindowCloseEvent() = default;
 
 		EVENT_CLASS_TYPE(WindowClose)
@@ -38,6 +37,7 @@ namespace Lulu
 
 	class LULU_API AppTickEvent : public Event
 	{
+	public:
 		AppTickEvent() = default;
 
 		EVENT_CLASS_TYPE(AppTick)
@@ -54,6 +54,7 @@ namespace Lulu
 
 	class LULU_API AppRenderEvent : public Event
 	{
+	public:
 		AppRenderEvent() = default;
 
 		EVENT_CLASS_TYPE(AppRender)

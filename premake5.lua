@@ -11,6 +11,12 @@ workspace "Lulu"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+--Iclude dirs relative to root folder (solution dirs)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Lulu/vendor/GLFW/include"
+
+include "Lulu/vendor/GLFW"
+
 project "Lulu"
 	location "Lulu"
 	kind "SharedLib"
@@ -18,6 +24,9 @@ project "Lulu"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "lupch.hpp"
+	pchsource "Lulu/Src/lupch.cpp"
 
 	files 
 	{
@@ -28,9 +37,17 @@ project "Lulu"
 
 	includedirs
 	{
-		"${prj.name}/Src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/Src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
 	}
+
+	links 
+	{
+		"GLFW",
+		"opengl32.lib"
+	}
+
 
 	filter "system:windows"
 		cppdialect "C++17"
@@ -40,7 +57,8 @@ project "Lulu"
 		defines 
 		{
 			"LU_PLATFORM_WINDOWS",
-			"LU_BUILD_DLL"
+			"LU_BUILD_DLL",
+			"LU_ENABLE_ASSERTS"
 		}
 
 		postbuildcommands

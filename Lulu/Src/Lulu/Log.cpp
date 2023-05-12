@@ -1,3 +1,5 @@
+#include "lupch.hpp"
+
 #include "Log.hpp"
 
 std::shared_ptr<spdlog::logger> Lulu::Log::s_CoreLogger;

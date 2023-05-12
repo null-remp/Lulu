@@ -2,8 +2,6 @@
 
 #include "Event.hpp"
 
-#include <sstream>
-
 namespace Lulu
 {
 	class LULU_API KeyEvent : public Event
