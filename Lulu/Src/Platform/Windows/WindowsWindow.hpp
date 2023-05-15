@@ -17,7 +17,7 @@ namespace Lulu
 		inline unsigned GetHeight() const override { return m_Data.Height; }
 
 		//Window attributes
-		inline void SetEventCallback(const EventCallbackFn& callback);
+		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
@@ -31,12 +31,13 @@ namespace Lulu
 		struct WindowData
 		{
 			std::string Title;
-			unsigned Width, Height;
-			bool VSync;
+			unsigned Width{ 0 };
+			unsigned Height{ 0 };
+			bool VSync{ false };
 
 			EventCallbackFn EventCallback;
 		};
-
+		
 		WindowData m_Data;
 	};
 }
