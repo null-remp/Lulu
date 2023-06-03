@@ -14,9 +14,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 --Iclude dirs relative to root folder (solution dirs)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Lulu/vendor/GLFW/include"
+IncludeDir["Glad"] = "Lulu/vendor/Glad/include"
+
 
 include "Lulu/vendor/GLFW"
-
+include "Lulu/vendor/Glad"
 project "Lulu"
 	location "Lulu"
 	kind "SharedLib"
@@ -39,12 +41,14 @@ project "Lulu"
 	{
 		"%{prj.name}/Src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links 
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -58,7 +62,8 @@ project "Lulu"
 		{
 			"LU_PLATFORM_WINDOWS",
 			"LU_BUILD_DLL",
-			"LU_ENABLE_ASSERTS"
+			"LU_ENABLE_ASSERTS",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -68,14 +73,17 @@ project "Lulu"
 
 	filter "configurations:Debug"
 		defines "LU_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "LU_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 	
 	filter "configurations:Dist"
 		defines "LU_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -116,12 +124,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "LU_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "LU_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 	
 	filter "configurations:Dist"
 		defines "LU_DIST"
+		buildoptions "/MD"
 		optimize "On"
