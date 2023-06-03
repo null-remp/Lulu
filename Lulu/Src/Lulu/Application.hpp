@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core.hpp"
+#include "LayerStack.hpp"
 #include "Events/Event.hpp"
 #include "Events/ApplicationEvent.hpp"
 #include "Window.hpp"
@@ -17,11 +18,16 @@ namespace Lulu
 		void Run();
 
 		void OnEvent(Event& e);
+
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
+
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 	
 	private:
 		std::unique_ptr<Window> m_Window;
+		LayerStack m_LayerStack;
 		bool m_Running = true;
 	};
 
