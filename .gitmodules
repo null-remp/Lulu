@@ -4,3 +4,9 @@
 [submodule "Lulu/vendor/GLFW"]
 	path = Lulu/vendor/GLFW
 	url = https://github.com/glfw/glfw
+[submodule "imgui"]
+	path = imgui
+	url = https://github.com/ocornut/imgui
+[submodule "Lulu/vendor/imgui"]
+	path = Lulu/vendor/imgui
+	url = https://github.com/ocornut/imgui

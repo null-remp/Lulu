@@ -6,6 +6,7 @@
 #include "Lulu/Application.hpp"
 #include "Lulu/Layer.hpp"
 #include "Lulu/Log.hpp"
+#include "Lulu/ImGui/ImGuiLayer.hpp"
 
 /*
 * Entry Point

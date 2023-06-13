@@ -22,6 +22,10 @@ namespace Lulu
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
+		inline Window& GetWindow() { return *m_Window; }
+
+		inline static Application& Get() { return *s_Instance; }
+
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 	
@@ -29,6 +33,9 @@ namespace Lulu
 		std::unique_ptr<Window> m_Window;
 		LayerStack m_LayerStack;
 		bool m_Running = true;
+
+	private:
+		static Application* s_Instance;
 	};
 
 	//Must be defined in Client
