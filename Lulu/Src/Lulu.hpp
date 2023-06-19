@@ -8,6 +8,10 @@
 #include "Lulu/Log.hpp"
 #include "Lulu/ImGui/ImGuiLayer.hpp"
 
+#include "Lulu/Input.hpp"
+#include "Lulu/KeyCodes.hpp"
+#include "Lulu/MouseButtonCodes.hpp"
+
 /*
 * Entry Point
 */

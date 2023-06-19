@@ -7,6 +7,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.hpp"
+
 namespace Lulu
 {
 #define BIND_EVENT_FUNC(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -35,7 +37,7 @@ namespace Lulu
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
-
+			
 			m_Window->OnUpdate();
 		}
 	}

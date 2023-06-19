@@ -8,11 +8,14 @@ public:
 	void OnUpdate() override
 	{
 		LU_CORE_INFO("ExapleLayer::Update");
+
+		if (Lulu::Input::IsKeyPressed(LU_KEY_TAB))
+			LU_APP_INFO("Tab key is pressed!");
 	}
 
 	void OnEvent(Lulu::Event& event) override
 	{
-		LU_CORE_TRACE("{0}", event);
+		//LU_CORE_TRACE("{0}", event);
 	}
 };
 

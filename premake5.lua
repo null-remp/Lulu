@@ -22,11 +22,11 @@ include "Lulu/vendor/GLFW"
 include "Lulu/vendor/Glad"
 include "Lulu/vendor/imgui"
 
-
 project "Lulu"
 	location "Lulu"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -61,7 +61,6 @@ project "Lulu"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines 
@@ -74,29 +73,30 @@ project "Lulu"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "LU_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "LU_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 	
 	filter "configurations:Dist"
 		defines "LU_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	
+	staticruntime "off"
+
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
@@ -120,7 +120,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines 
@@ -130,15 +129,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "LU_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "LU_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 	
 	filter "configurations:Dist"
 		defines "LU_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
