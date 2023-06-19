@@ -13,9 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 --Iclude dirs relative to root folder (solution dirs)
 IncludeDir = {}
-IncludeDir["GLFW"] = "Lulu/vendor/GLFW/include"
-IncludeDir["Glad"] = "Lulu/vendor/Glad/include"
+IncludeDir["GLFW"]  = "Lulu/vendor/GLFW/include"
+IncludeDir["Glad"]  = "Lulu/vendor/Glad/include"
 IncludeDir["ImGui"] = "Lulu/vendor/imgui"
+IncludeDir["glm"]   = "Lulu/vendor/glm"
 
 
 include "Lulu/vendor/GLFW"
@@ -38,7 +39,9 @@ project "Lulu"
 	{
 		"%{prj.name}/Src/**.hpp",
 		"%{prj.name}/Src/**.h",
-		"%{prj.name}/Src/**.cpp"
+		"%{prj.name}/Src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -47,7 +50,8 @@ project "Lulu"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links 
@@ -110,7 +114,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Lulu/vendor/spdlog/include",
-		"Lulu/Src"
+		"Lulu/Src",
+		"%{IncludeDir.glm}"
 	}
 
 	links

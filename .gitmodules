@@ -7,3 +7,6 @@
 [submodule "Lulu/vendor/imgui"]
 	path = Lulu/vendor/imgui
 	url = https://github.com/ocornut/imgui
+[submodule "Lulu/vendor/glm"]
+	path = Lulu/vendor/glm
+	url = https://github.com/g-truc/glm
